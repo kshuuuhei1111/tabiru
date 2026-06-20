@@ -1,0 +1,16 @@
+node_modules/
+.DS_Store
+
+# Next.js
+apps/web/.next/
+apps/web/out/
+
+# Expo
+apps/mobile/.expo/
+apps/mobile/dist/
+
+# pnpm
+pnpm-debug.log*
+
+# TypeScript
+*.tsbuildinfo

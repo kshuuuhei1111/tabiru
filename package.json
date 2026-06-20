@@ -1,0 +1,10 @@
+{
+  "name": "tabiru",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "mobile": "pnpm --filter @tabiru/mobile start",
+    "web": "pnpm --filter @tabiru/web dev",
+    "typecheck": "pnpm -r typecheck"
+  }
+}
