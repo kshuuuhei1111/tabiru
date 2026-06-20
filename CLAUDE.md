@@ -131,9 +131,11 @@ interface Photo {
 ## コーディング規約
 
 - **言語**：TypeScript strict mode（`strict: true`）
+- **スタイリング**：**NativeWind v4**（mobile）/ **Tailwind CSS**（web）。クラス名で統一
 - **命名**：コンポーネントは PascalCase、ファイル・ディレクトリは kebab-case
-- **画面配置**：`apps/mobile/screens/<screen-name>/index.tsx`
-- **コンポーネント配置**：`apps/mobile/components/<name>.tsx`
+- **画面配置**：`apps/mobile/src/screens/<screen-name>/index.tsx`
+- **コンポーネント配置**：`apps/mobile/src/components/<name>.tsx`
+- **ナビゲーション**：React Navigation（Stack + BottomTabs）
 - **型 import**：`packages/shared` の型を優先し、アプリ固有の型はアプリ内に閉じる
 - **バックエンド未確定の間**：データはローカル状態またはモックで実装し、`packages/shared` の型に準拠させる
 
@@ -153,6 +155,32 @@ interface Photo {
 - `/code-review` — 変更のレビュー
 - `/verify` — 実機・シミュレータで動作確認
 
+## 開発フロー（仕様駆動）
+
+- 機能は `specs/NNN-*.md` の仕様を契約として進める
+- 仕様 → Issue → ブランチ実装 → Draft PR → レビュー → マージ の順
+- PR は受け入れ条件を満たすことを基準にする。本文に `Closes #<issue>` を含める
+- 着手前に実装計画を提示する。未確定事項（バックエンド等）には踏み込まない
+- ブランチ名: `feature/<issue番号>-<短い説明>`
+
+```
+/spec <機能名>          → specs/NNN-xxx.md を作成
+/create-issue specs/... → GitHub Issue を作成
+/implement-issue <#>    → ブランチ作成・実装・Draft PR 作成
+/code-review            → 変更のレビュー
+```
+
+## Skills
+
+- `/spec <機能名>` — 仕様書を `specs/` に作成
+- `/create-issue specs/NNN-xxx.md` — 仕様書から GitHub Issue を作成
+- `/implement-issue <Issue番号>` — Issue を実装して Draft PR を作成
+- `/commit` — Conventional Commits 形式でコミット（push はしない）
+- `/new-screen <画面名>` — 画面の雛形を作成しナビゲーションに登録
+- `/code-review` — 変更のレビュー
+- `/verify` — 実機・シミュレータで動作確認
+
 ## ドキュメント
 
 - [docs/要件定義書.md](docs/要件定義書.md) — 詳細な機能要件・非機能要件・技術論点
+- [specs/](specs/) — 機能仕様書（spec）一覧
